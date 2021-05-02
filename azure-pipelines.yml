@@ -2,9 +2,9 @@ pool:
   vmImage: 'ubuntu-16.04'
 steps:
 - bash: echo "Hello world"
-#- bash: echo ${Pipeline.Workspace}
-#- bash: echo ${Agent.BuildDirectory}
+- bash: echo $(Pipeline.Workspace)
+- bash: echo $(Agent.BuildDirectory)
 - bash: echo $(Build.SourcesDirectory)
-#- bash: echo ${Build.ArtifactStagingDirectory}
-#- bash: echo ${Build.BinariesDirectory}
-#- bash: echo ${Common.TestResultsDirectory}
+- bash: echo $(Build.ArtifactStagingDirectory)
+- bash: echo $(Build.BinariesDirectory)
+- bash: echo $(Common.TestResultsDirectory)
