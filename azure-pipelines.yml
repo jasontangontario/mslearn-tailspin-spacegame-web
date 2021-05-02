@@ -20,5 +20,5 @@ jobs:
     inputs:
       artifactName: WebSite
       downloadPath: $(System.DefaultWorkingDirectory)
-dependsOn: Build
-condition: succeeded()
+  dependsOn: Build
+  condition: succeeded()
