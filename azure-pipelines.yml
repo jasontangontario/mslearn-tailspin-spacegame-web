@@ -1,9 +1,15 @@
 variables:
 - name: testNull
-  value: ''
+  value: 'abc'
 
 jobs:
+
 - job: A
   steps:
   - script: echo testNull is blank
   condition: eq('${{ variables.testNull }}', '')
+
+- job: B
+  steps:
+  - script: echo testNull is NOT blank
+  condition: ne('${{ variables.testNull }}', '')
