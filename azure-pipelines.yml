@@ -1,11 +1,9 @@
-jobs:
-- job: Foo
-  steps:
-  - script: echo Hello!
-    condition: always() # this step will always run, even if the pipeline is canceled
+variables:
+- name: testNull
+  value: ''
 
-- job: Bar
-  dependsOn: Foo
-  condition: always() # this job will only run if Foo fails
+jobs:
+- job: A
   steps:
-  - script: echo Hello Again
+  - script: echo testNull is blank
+  condition: eq('${{ variables.testNull }}', '')
