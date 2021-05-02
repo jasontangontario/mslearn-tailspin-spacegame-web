@@ -7,8 +7,8 @@ jobs:
     - script: npm test
     - task: PublishBuildArtifacts@1
       inputs:
-      pathtoPublish: '$(System.DefaultWorkingDirectory)'
-      artifactName: WebSite
+        pathtoPublish: '$(System.DefaultWorkingDirectory)'
+        artifactName: WebSite
 # download the artifact and deploy it only if the build job succeeded
 - job: Deploy
   pool:
