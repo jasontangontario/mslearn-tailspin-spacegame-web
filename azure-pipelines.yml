@@ -9,7 +9,7 @@ steps:
   displayName: First variable pass
 - bash: echo '##vso[task.setvariable variable=one]secondValue'
   displayName: Set new variable value
-- script: $(one) = '3rd value'
+- script: echo $(two)
 - script: |
     echo ${{ variables.one }} # outputs initialValue
     echo $(one) # outputs secondValue
