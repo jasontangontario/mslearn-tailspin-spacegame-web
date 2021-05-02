@@ -6,6 +6,6 @@ jobs:
 
 - job: Bar
   dependsOn: Foo
-  condition: failed() # this job will only run if Foo fails
+  condition: always() # this job will only run if Foo fails
   steps:
   - script: echo Hello Again
