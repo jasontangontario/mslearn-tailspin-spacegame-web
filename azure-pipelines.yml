@@ -1,15 +1,11 @@
 jobs:
-  # Track deployments on the environment.
-- deployment: DeployWeb
-  displayName: deploy Web App
-  pool:
-    vmImage: 'Ubuntu-16.04'
-  # Creates an environment if it doesn't exist.
-  environment: 'smarthotel-dev'
-  strategy:
-    # Default deployment strategy, more coming...
-    runOnce:
-      deploy:
-        steps:
-        - checkout: self
-        - script: echo my first deployment
+- job: Foo
+  steps:
+  - script: echo Hello!
+    condition: always() # this step will always run, even if the pipeline is canceled
+
+- job: Bar
+  dependsOn: Foo
+  condition: failed() # this job will only run if Foo fails
+  steps:
+  - script: echo Hello Again
