@@ -1,29 +1,27 @@
 parameters:
-
-- name: image
-  displayName: Pool Image
-  default: ubuntu-latest
+- name: myStringName
+  type: string
+  default: a string value
+- name: myMultiString
+  type: string
+  default: default
   values:
-  - windows-latest
-  - vs2017-win2016
-  - ubuntu-latest
-  - ubuntu-16.04
-  - macOS-latest
-  - macOS-10.14
-
-- name: test
-  displayName: Run Tests?
+  - default
+  - ubuntu
+- name: myNumber
+  type: number
+  default: 2
+  values:
+  - 1
+  - 2
+  - 4
+  - 8
+  - 16
+- name: myBoolean
   type: boolean
-  default: false
+  default: true
 
-trigger: none
-
-jobs:
-- job: build
-  displayName: Build and Test
-  pool: 
-    vmImage: ${{ parameters.image }}
-  steps:
-  - script: echo building $(Build.BuildNumber)
-  - ${{ if eq(parameters.test, true) }}:
-    - script: echo "Running all the tests"
+steps: 
+- ${{ each parameter in parameters }}:
+  - script: echo ${{ parameter.Key }} 
+  - script: echo ${{ parameter.Value }}
