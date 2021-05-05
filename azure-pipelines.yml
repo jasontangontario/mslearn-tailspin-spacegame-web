@@ -15,18 +15,18 @@ steps:
 
 #read variables
 - bash: |
-  echo "Non-secrets automatically mapped in, sauce is $SAUCE"
-  echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
-  echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
-  echo "Future jobs can also see $SETVARS_OUTPUTSAUCE"
-  echo "Future jobs can also see $(SetVars.outputSauce)"
+    echo "Non-secrets automatically mapped in, sauce is $SAUCE"
+    echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
+    echo "You can use macro replacement to get secrets, and they will be masked in the log: $(secretSauce)"
+    echo "Future jobs can also see $SETVARS_OUTPUTSAUCE"
+    echo "Future jobs can also see $(SetVars.outputSauce)"
 
 #formatting commands
 - bash: |
-  echo "##[group]Beginning of a group"
-  echo "##[warning]Warning message"
-  echo "##[error]Error message"
-  echo "##[section]Start of a section"
-  echo "##[debug]Debug text"
-  echo "##[command]Command-line being run"
-  echo "##[endgroup]"
+    echo "##[group]Beginning of a group"
+    echo "##[warning]Warning message"
+    echo "##[error]Error message"
+    echo "##[section]Start of a section"
+    echo "##[debug]Debug text"
+    echo "##[command]Command-line being run"
+    echo "##[endgroup]"
