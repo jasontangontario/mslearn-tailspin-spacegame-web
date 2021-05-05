@@ -5,28 +5,19 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-
-#set variables
+# Create a variable
 - bash: |
-    echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-    echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
-  name: SetVars
+  echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
 
-#read variables
+# Use the variable
+# "$(sauce)" is replaced by the contents of the `sauce` variable by Azure Pipelines
+# before handing the body of the script to the shell.
 - bash: |
-    echo "Non-secrets automatically mapped in, sauce is $SAUCE"
-    echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
-    echo "You can use macro replacement to get secrets, and they will be masked in the log: $(secretSauce)"
-    echo "Future jobs can also see $SETVARS_OUTPUTSAUCE"
-    echo "Future jobs can also see $(SetVars.outputSauce)"
+  echo my pipeline variable is $(sauce)
 
-#formatting commands
+# An environment variable called `SAUCE` has been added to all downstream steps
 - bash: |
-    echo "##[group]Beginning of a group"
-    echo "##[warning]Warning message"
-    echo "##[error]Error message"
-    echo "##[section]Start of a section"
-    echo "##[debug]Debug text"
-    echo "##[command]Command-line being run"
-    echo "##[endgroup]"
+  echo "my environment variable is $SAUCE"
+
+- pwsh: |
+  Write-Host "my environment variable is $env:SAUCE"
