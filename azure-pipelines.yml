@@ -6,18 +6,14 @@ pool:
 
 steps:
 # Create a variable
-- bash: |
-  echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
+- bash: echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
 
 # Use the variable
 # "$(sauce)" is replaced by the contents of the `sauce` variable by Azure Pipelines
 # before handing the body of the script to the shell.
-- bash: |
-  echo my pipeline variable is $(sauce)
+- bash: echo my pipeline variable is $(sauce)
 
 # An environment variable called `SAUCE` has been added to all downstream steps
-- bash: |
-  echo "my environment variable is $SAUCE"
+- bash: echo "my environment variable is $SAUCE"
 
-- pwsh: |
-  Write-Host "my environment variable is $env:SAUCE"
+- pwsh: Write-Host "my environment variable is $env:SAUCE"
