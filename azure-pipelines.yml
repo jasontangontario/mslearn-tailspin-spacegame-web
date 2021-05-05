@@ -1,3 +1,9 @@
+trigger:
+- '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
 steps:
 
 #set variables
