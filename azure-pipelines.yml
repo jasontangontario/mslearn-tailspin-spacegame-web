@@ -9,4 +9,4 @@ steps:
 #set variables
   - bash: |
     echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
-  name: SetVars
+    name: SetVars
