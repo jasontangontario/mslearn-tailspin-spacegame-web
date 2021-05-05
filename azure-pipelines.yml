@@ -7,26 +7,8 @@ pool:
 steps:
 
 #set variables
-- bash: |
-  echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
-  echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-  echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
+  - bash: |
+    echo "##vso[task.setvariable variable=sauce]crushed tomatoes"
+    echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
+    echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
   name: SetVars
-
-#read variables
-- bash: |
-  echo "Non-secrets automatically mapped in, sauce is $SAUCE"
-  echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
-  echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
-  echo "Future jobs can also see $SETVARS_OUTPUTSAUCE"
-  echo "Future jobs can also see $(SetVars.outputSauce)"
-
-#formatting commands
-- bash: |
-  echo "##[group]Beginning of a group"
-  echo "##[warning]Warning message"
-  echo "##[error]Error message"
-  echo "##[section]Start of a section"
-  echo "##[debug]Debug text"
-  echo "##[command]Command-line being run"
-  echo "##[endgroup]"
