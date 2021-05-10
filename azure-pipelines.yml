@@ -4,3 +4,7 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+
+steps:
+  scripts: pwd
+
