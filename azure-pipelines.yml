@@ -7,3 +7,8 @@ pool:
 
 steps:
 - bash: echo "Hello world"
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: '$(System.DefaultWorkingDirectory)'
+    artifactName: drop
