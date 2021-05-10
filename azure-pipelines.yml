@@ -6,5 +6,4 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-  scripts: pwd
-
+- bash: echo "Hello world"
