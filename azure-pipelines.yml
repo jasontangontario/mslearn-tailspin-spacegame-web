@@ -8,7 +8,7 @@ pool:
 steps:
 - task: CmdLine@2
   inputs:
-    script: "git clone https://github.com/jasontangontario/mslearn-tailspin-spacegame-web.git $(Build.SourceDirectory)/mslearn-tailspin-spacegame-web"
+    script: "git clone https://github.com/jasontangontario/mslearn-tailspin-spacegame-web.git $(System.DefaultWorkingDirectory)/mslearn-tailspin-spacegame-web"
 
 - task: UseYuniqlCLI@1
   inputs:
@@ -18,5 +18,5 @@ steps:
   inputs:
     version: "v1.1.55"
     connectionString: "Host=postgres-migration-poc.postgres.database.azure.com;Port=5432;Username=mtoadmin@postgres-migration-poc;Password=Password123$;Database=postgres;ssl=required"  
-    workspacePath: "$(Build.SourceDirectory)/mslearn-tailspin-spacegame-web/yuniql"
+    workspacePath: "$(System.DefaultWorkingDirectory)/mslearn-tailspin-spacegame-web/yuniql"
     additionalArguments: "--debug"
