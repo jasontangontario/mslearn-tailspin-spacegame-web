@@ -1,0 +1,1 @@
+insert into public.regions(region_id,region_name) values(2,'east');
