@@ -1,1 +1,1 @@
-insert into public.region(region_id,region_name) values(1,'central');
+insert into public.regions(region_id,region_name) values(1,'central');
